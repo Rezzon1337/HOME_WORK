@@ -1,0 +1,173 @@
+
+### pwd
+/tmp/linux-hw-files.1m4BxcdJ
+
+### mkdir -m 750 private
+
+### mkdir -p dir1/dir2/dir3
+
+### mkdir dirA dirB
+
+### ls -F
+dir1/
+dirA/
+dirB/
+private/
+
+### ls -l
+total 16
+drwxr-xr-x 3 root root 4096 Oct 16 18:14 dir1
+drwxr-xr-x 2 root root 4096 Oct 16 18:14 dirA
+drwxr-xr-x 2 root root 4096 Oct 16 18:14 dirB
+drwxr-x--- 2 root root 4096 Oct 16 18:14 private
+
+### cd dirA; pwd; cd ..
+/tmp/linux-hw-files.1m4BxcdJ/dirA
+
+### touch file1.txt file2.txt
+
+### cat > docs.txt (создание текста)
+
+### cat docs.txt
+Linux and UNIX
+Red Hat Linux
+cat
+az
+get put write
+$1.00
+
+### more docs.txt (интерактивная команда; пример: more docs.txt, выход q)
+
+### cp docs.txt copied.txt
+
+### cp docs.txt dirA/
+
+### cp -r dirA dir_copy
+
+### mv copied.txt renamed.txt
+
+### mv renamed.txt dirB/
+
+### mv dir_copy renamed_dir
+
+### cat > people.txt
+
+### cut -c 1-8 people.txt
+1 Ivan 5
+2 Peter 
+3 Sasha 
+
+### cut -d ' ' -f 2 people.txt
+Ivan
+Peter
+Sasha
+
+### grep -i linux docs.txt
+Linux and UNIX
+Red Hat Linux
+
+### grep -ci 'Red Hat Linux' docs.txt
+1
+
+### grep -E '(get|put|print|write)' docs.txt
+get put write
+
+### grep '^a.*z$' docs.txt
+az
+
+### grep -E '^[aA]$' docs.txt
+
+### grep '$1\.00' docs.txt
+$1.00
+
+### find . -name '*.txt' -type f
+./dirB/renamed.txt
+./dirA/docs.txt
+./people.txt
+./docs.txt
+./renamed_dir/docs.txt
+./file2.txt
+./file1.txt
+
+### find . -type d
+.
+./private
+./dirB
+./dirA
+./renamed_dir
+./dir1
+./dir1/dir2
+./dir1/dir2/dir3
+
+### find . -type f -maxdepth 1
+./people.txt
+./docs.txt
+./file2.txt
+./file1.txt
+
+### find . -mtime -3 -type f
+./dirB/renamed.txt
+./dirA/docs.txt
+./people.txt
+./docs.txt
+./renamed_dir/docs.txt
+./file2.txt
+./file1.txt
+
+### find . -user root -type f
+./dirB/renamed.txt
+./dirA/docs.txt
+./people.txt
+./docs.txt
+./renamed_dir/docs.txt
+./file2.txt
+./file1.txt
+
+### find . -group root -type f
+./dirB/renamed.txt
+./dirA/docs.txt
+./people.txt
+./docs.txt
+./renamed_dir/docs.txt
+./file2.txt
+./file1.txt
+
+### find . -name '*.txt' -exec wc -l {} \;
+6 ./dirB/renamed.txt
+6 ./dirA/docs.txt
+3 ./people.txt
+6 ./docs.txt
+6 ./renamed_dir/docs.txt
+0 ./file2.txt
+0 ./file1.txt
+
+### find . -type f -size +500c
+./large.dat
+
+### find . -type f -atime +3
+./file1.txt
+
+### rm file1.txt file2.txt
+
+### rm -i (демонстрация с подтверждением): printf 'n' | rm -i dirB/renamed.txt
+rm: remove regular file 'dirB/renamed.txt'? 
+### rm -v dirB/renamed.txt
+removed 'dirB/renamed.txt'
+
+### rmdir пустого каталога
+
+### rm -r renamed_dir
+
+### rmdir -p dir1/dir2/dir3
+
+### ls -la
+total 32
+drwx------ 4 root root 4096 Oct 16 18:14 .
+drwxrwxrwt 1 root root 4096 Oct 16 18:14 ..
+drwxr-xr-x 2 root root 4096 Oct 16 18:14 dirA
+-rw-r--r-- 1 root root   56 Oct 16 18:14 docs.txt
+-rw-r--r-- 1 root root 1100 Oct 16 18:14 large.dat
+-rw-r--r-- 1 root root   55 Oct 16 18:14 people.txt
+drwxr-x--- 2 root root 4096 Oct 16 18:14 private
+
+Завершено: все изменения находились в /tmp/linux-hw-files.1m4BxcdJ (каталог будет удалён).

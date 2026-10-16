@@ -1,0 +1,123 @@
+=== Параметры окружения ===
+Linux 3d8341282e13 6.18.44 #1 SMP Sat Sep 26 20:02:31 UTC 2026 x86_64 GNU/Linux
+
+=== /proc/iomem ===
+00000000-00000000 : Reserved
+00000000-00000000 : System RAM
+00000000-00000000 : Reserved
+  00000000-00000000 : System ROM
+00000000-00000000 : System RAM
+  00000000-00000000 : Kernel code
+  00000000-00000000 : Kernel rodata
+  00000000-00000000 : Kernel data
+  00000000-00000000 : Kernel bss
+00000000-00000000 : PCI Bus 0000:00
+  00000000-00000000 : 0000:00:01.0
+    00000000-00000000 : virtio-pci-modern
+00000000-00000000 : Reserved
+  00000000-00000000 : PCI ECAM 0000 [bus 00-00]
+    00000000-00000000 : PCI Bus 0000:00
+      00000000-00000000 : pnp 00:00
+00000000-00000000 : IOAPIC 0
+00000000-00000000 : System RAM
+00000000-00000000 : PCI Bus 0000:00
+  00000000-00000000 : 0000:00:06.0
+    00000000-00000000 : virtio-pci-modern
+  00000000-00000000 : 0000:00:05.0
+    00000000-00000000 : virtio-pci-modern
+  00000000-00000000 : 0000:00:04.0
+    00000000-00000000 : virtio-pci-modern
+  00000000-00000000 : 0000:00:03.0
+    00000000-00000000 : virtio-pci-modern
+  00000000-00000000 : 0000:00:02.0
+    00000000-00000000 : virtio-pci-modern
+  00000000-00000000 : namespace0.0
+
+=== /proc/meminfo ===
+MemTotal:        6090704 kB
+MemFree:         4974496 kB
+MemAvailable:    4893104 kB
+Buffers:            5832 kB
+Cached:            89132 kB
+SwapCached:            0 kB
+Active:            37652 kB
+Inactive:         492880 kB
+Active(anon):        120 kB
+Inactive(anon):   465324 kB
+Active(file):      37532 kB
+Inactive(file):    27556 kB
+Unevictable:       29920 kB
+Mlocked:               0 kB
+SwapTotal:             0 kB
+SwapFree:              0 kB
+Dirty:               260 kB
+Writeback:             0 kB
+AnonPages:        465696 kB
+Mapped:            87176 kB
+Shmem:                12 kB
+KReclaimable:      28748 kB
+Slab:              64008 kB
+SReclaimable:      28748 kB
+SUnreclaim:        35260 kB
+KernelStack:        2792 kB
+PageTables:         4020 kB
+SecPageTables:         0 kB
+NFS_Unstable:          0 kB
+Bounce:                0 kB
+WritebackTmp:          0 kB
+CommitLimit:     3045352 kB
+Committed_AS:     588504 kB
+VmallocTotal:   34359738367 kB
+VmallocUsed:        5080 kB
+VmallocChunk:          0 kB
+Percpu:             1224 kB
+AnonHugePages:         0 kB
+ShmemHugePages:        0 kB
+ShmemPmdMapped:        0 kB
+FileHugePages:     18432 kB
+FilePmdMapped:         0 kB
+Balloon:               0 kB
+HugePages_Total:       0
+HugePages_Free:        0
+HugePages_Rsvd:        0
+HugePages_Surp:        0
+Hugepagesize:       2048 kB
+Hugetlb:               0 kB
+DirectMap4k:       18432 kB
+DirectMap2M:     3702784 kB
+DirectMap1G:    31457280 kB
+
+=== pgrep bash ===
+32 /bin/bash /usr/local/init_scripts/logrotate_loop.sh
+249 /bin/bash /usr/local/init_scripts/python_tool.sh
+272 /bin/bash /usr/local/init_scripts/terminal_server.sh
+1036 bash -lc cd /mnt/data/linux-homework && timeout 25 bash memory/collect_memory.sh > evidence/memory_demo.txt 2>&1; rc=$?; echo rc=$rc; wc -l evidence/memory_demo.txt && tail -n 22 evidence/memory_demo.txt python - <<'PY' from PIL import Image im=Image.open('/mnt/data/linux-homework/assets/linux_tree.png') print('tree',im.size) PY
+1040 bash memory/collect_memory.sh
+
+=== /proc/self/maps (фрагмент карты собственного процесса) ===
+55cca306e000-55cca3070000 r--p 00000000 00:1b 9223372036855663147        /usr/bin/head
+55cca3070000-55cca3077000 r-xp 00002000 00:1b 9223372036855663147        /usr/bin/head
+55cca3077000-55cca307a000 r--p 00009000 00:1b 9223372036855663147        /usr/bin/head
+55cca307a000-55cca307b000 r--p 0000b000 00:1b 9223372036855663147        /usr/bin/head
+55cca307b000-55cca307c000 rw-p 0000c000 00:1b 9223372036855663147        /usr/bin/head
+55cca7a57000-55cca7a78000 rw-p 00000000 00:00 0                          [heap]
+7f593cfe1000-7f593cfe4000 rw-p 00000000 00:00 0 
+7f593cfe4000-7f593d00c000 r--p 00000000 00:1b 9223372036855854193        /usr/lib/x86_64-linux-gnu/libc.so.6
+7f593d00c000-7f593d16f000 r-xp 00028000 00:1b 9223372036855854193        /usr/lib/x86_64-linux-gnu/libc.so.6
+7f593d16f000-7f593d1c5000 r--p 0018b000 00:1b 9223372036855854193        /usr/lib/x86_64-linux-gnu/libc.so.6
+7f593d1c5000-7f593d1c9000 r--p 001e0000 00:1b 9223372036855854193        /usr/lib/x86_64-linux-gnu/libc.so.6
+7f593d1c9000-7f593d1cb000 rw-p 001e4000 00:1b 9223372036855854193        /usr/lib/x86_64-linux-gnu/libc.so.6
+7f593d1cb000-7f593d1d8000 rw-p 00000000 00:00 0 
+7f593d1e9000-7f593d1eb000 rw-p 00000000 00:00 0 
+7f593d1eb000-7f593d1ef000 r--p 00000000 00:00 0                          [vvar]
+
+=== Проверка существования /proc/self/mem ===
+-rw------- 1 root root 0 Oct 16 18:14 /proc/self/mem
+
+=== Два безопасных учебных процесса: maps и mem ===
+Процесс 1: PID=1058; виртуальный адрес тестового буфера=0x7f3534b7cb10
+  /proc/1058/maps (первая строка): 00400000-00420000 r--p 00000000 00:1b 9223372036854877799                /opt/pyvenv/bin/python3
+  /proc/1058/mem (только свой тестовый буфер): b'LINUX_HW_MEMORY_SAMPLE'
+Процесс 2: PID=1068; виртуальный адрес тестового буфера=0x7fe157c44b10
+  /proc/1068/maps (первая строка): 00400000-00420000 r--p 00000000 00:1b 9223372036854877799                /opt/pyvenv/bin/python3
+  /proc/1068/mem (только свой тестовый буфер): b'LINUX_HW_MEMORY_SAMPLE'

@@ -1,0 +1,24 @@
+
+Созданные пользователи:
+uid=1001(hw_alice) gid=1002(hw_alice) groups=1002(hw_alice)
+uid=1002(hw_bob) gid=1003(hw_bob) groups=1003(hw_bob)
+uid=1003(hw_carol) gid=1004(hw_carol) groups=1004(hw_carol)
+
+Итоговые права и владельцы:
+total 20
+drwxrwxrwt 2 root     root     4096 Oct 16 18:16 .
+drwxr-xr-x 1 root     root     4096 Oct 16 18:15 ..
+-rw------- 1 hw_bob   hw_bob     58 Oct 16 18:16 alice.txt
+-rw-r----- 1 hw_carol hw_carol   56 Oct 16 18:16 bob.txt
+-rwxr-xr-- 1 hw_alice hw_alice   58 Oct 16 18:16 carol.txt
+/srv/linux-homework-users/alice.txt | hw_bob:hw_bob | 600 | -rw-------
+/srv/linux-homework-users/bob.txt | hw_carol:hw_carol | 640 | -rw-r-----
+/srv/linux-homework-users/carol.txt | hw_alice:hw_alice | 754 | -rwxr-xr--
+
+Пробуем читать от имени hw_alice:
+cat: /srv/linux-homework-users/alice.txt: Permission denied
+Чтение alice.txt: запрещено
+cat: /srv/linux-homework-users/bob.txt: Permission denied
+Чтение bob.txt: запрещено
+Файл создан пользователем hw_carol
+Чтение carol.txt: разрешено
